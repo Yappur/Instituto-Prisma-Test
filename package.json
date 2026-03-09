@@ -1,0 +1,21 @@
+{
+  "name": "instituto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --env-file .env src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "dotenv": "^17.3.1",
+    "prisma": "^7.4.2"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.4.2",
+    "@prisma/client": "^7.4.2",
+    "pg": "^8.20.0"
+  }
+}
