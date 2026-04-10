@@ -15,6 +15,12 @@
 
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../src/generated/prisma/client.ts";
+import {
+  crearAlumno,
+  crearAlumnos,
+  obtenerAlumnos,
+  ObtenerDatosAlumnos,
+} from "./services/alumno.service.js";
 
 const connectionString = `${process.env.DATABASE_URL}`; // Nuesta conexion con la base de datos
 
@@ -23,6 +29,17 @@ const prisma = new PrismaClient({ adapter }); // pasamos la config a nuestro pri
 
 async function main() {
   console.log("Conexion Exitosa, el adaptador PG esta funcionando");
+  // 1- crear alumnos
+  // await crearAlumno(prisma);
+
+  // 2- crear varios alumnos
+  // await crearAlumnos(prisma);
+
+  // 3- Encontrar alumnos
+  // await obtenerAlumnos(prisma);
+
+  // 4- Encontrar Datos de alumnos
+  await ObtenerDatosAlumnos(prisma);
 }
 
 // invocamos el main y si algo falla el catch
