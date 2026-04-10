@@ -1,14 +1,28 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client"
   output   = "../src/generated/prisma"
 }
 
+// npx prisma generate
+
 datasource db {
   provider = "postgresql"
+}
+
+// definimos el modelo de Alumno
+model Alumno {
+  id Int @id @default(autoincrement()) // @default(autoincrement()) sirve para indicar que el ID crecera
+  nombre String
+  apellido String
+  email String @unique //@unique lo hace que no se pueda repetir, o sea unico
+  telefono String? // el simbolo ? indica que puede estar vacio
+  fechaCreacion DateTime @default(now()) // tomara la fecha actual del sistema
+  fechaActualizacion DateTime @updatedAt // @updatedAt sirve para que cuando hagamos una actualizacion update se modifique
+  cursos Curso[] // conexion con curso
+}
+
+model Curso{
+id Int @id @default(autoincrement()) // @default(autoincrement()) sirve para indicar que el ID crecera
+  nombre String 
+  alumnos Alumno[]
 }
