@@ -21,6 +21,7 @@ import {
   obtenerAlumnos,
   ObtenerDatosAlumnos,
 } from "./services/alumno.service.js";
+import { crearCurso, obtenerCursos } from "./services/curso.service.js";
 
 const connectionString = `${process.env.DATABASE_URL}`; // Nuesta conexion con la base de datos
 
@@ -39,7 +40,10 @@ async function main() {
   // await obtenerAlumnos(prisma);
 
   // 4- Encontrar Datos de alumnos
-  await ObtenerDatosAlumnos(prisma);
+  // await ObtenerDatosAlumnos(prisma);
+
+  // await crearCurso(prisma);
+  await obtenerCursos(prisma);
 }
 
 // invocamos el main y si algo falla el catch
