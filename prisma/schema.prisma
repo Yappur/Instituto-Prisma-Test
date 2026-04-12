@@ -25,4 +25,18 @@ model Curso{
 id Int @id @default(autoincrement()) // @default(autoincrement()) sirve para indicar que el ID crecera
   nombre String @unique 
   alumnos Alumno[]
+  profesor Profesor? @relation(fields: [profesorId], references: [id]) // relacion con profesor
+  profesorId Int? // campo para la relacion con profesor 
+}
+
+// ? indica que el campo puede estar vacio, en este caso un curso puede no tener profesor asignado, pero si un profesor puede tener varios cursos asignados
+
+// Un proesor podra estar en distintos cursos pero en cada curso solo puede haber un profesor, 
+// por eso se hace la relacion de uno a muchos
+model Profesor {
+  id Int @default(autoincrement()) @unique // @default(autoincrement()) sirve para indicar que el ID crecera y @unique lo hace que no se pueda repetir, o sea unico
+  nombre String
+  apellido String
+  email String @unique
+  cursos Curso[] // conexion con curso
 }

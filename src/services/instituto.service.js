@@ -1,15 +1,15 @@
 // Inscribir a un alumno a un curso
 export const inscribirAlumno = async (prisma) => {
   const inscripcion = await prisma.alumno.update({
-    where: { email: "jose@gmail.com" },
+    where: { email: "laura@gmail.com" },
     data: {
       cursos: {
         connect: [
-          { nombre: "Curso Prisma avanzado" },
-          { nombre: "Curso Github principiante" },
-          { nombre: "Curso typeScript" },
-          { nombre: "Curso Ingles" },
-          { nombre: "Curso javaScript" },
+          // { nombre: "Curso Prisma avanzado" },
+          // { nombre: "Curso Github principiante" },
+          // { nombre: "Curso typeScript" },
+          // { nombre: "Curso Ingles" },
+          // { nombre: "Curso javaScript" },
           { nombre: "Curso SQL" },
         ],
       },

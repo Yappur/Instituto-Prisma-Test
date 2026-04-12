@@ -19,12 +19,15 @@ import {
   ActualizarEmailAlumno,
   crearAlumno,
   crearAlumnos,
+  eliminarAlumno,
   obtenerAlumnos,
   ObtenerDatosAlumnos,
 } from "./services/alumno.service.js";
 import {
   ActualizarNombreCurso,
   crearCurso,
+  crearCursos,
+  datosCursoCompleto,
   eliminarCursoPorId,
   obtenerCursos,
 } from "./services/curso.service.js";
@@ -32,6 +35,7 @@ import {
   alumnosEnCurso,
   inscribirAlumno,
 } from "./services/instituto.service.js";
+import { agregarProfesor } from "./services/profesor.service.js";
 
 const connectionString = `${process.env.DATABASE_URL}`; // Nuesta conexion con la base de datos
 
@@ -53,13 +57,25 @@ async function main() {
   // await ObtenerDatosAlumnos(prisma);
 
   // await crearCurso(prisma);
+  // await crearCursos(prisma);
   // await obtenerCursos(prisma);
   // await eliminarCursoPorId(prisma, 1)
 
   // await ActualizarEmailAlumno(prisma, "mateox463@gmail.com", "mec638@gmail.com")
 
   // await inscribirAlumno(prisma);
-  await alumnosEnCurso(prisma);
+  // await alumnosEnCurso(prisma);
+  // await eliminarAlumno(prisma, "jose@gmail.com");
+
+  // await agregarProfesor(
+  //   prisma,
+  //   "Judas",
+  //   "Ludwig",
+  //   "judas@gail.com",
+  //   "Curso Ingles",
+  // );
+
+  await datosCursoCompleto(prisma, "Curso Ingles");
 }
 
 // invocamos el main y si algo falla el catch
