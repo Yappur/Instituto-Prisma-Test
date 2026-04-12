@@ -21,14 +21,20 @@ export const crearAlumnos = async (prisma) => {
     // createMany Sirve para crear muchos
     data: [
       {
-        nombre: "Jose",
+        nombre: "Luis",
         apellido: "Lopez",
-        email: "jose@gmail.com",
+        email: "luis@gmail.com",
       },
       {
-        nombre: "Raul",
+        nombre: "Maria",
         apellido: "Lopez",
-        email: "raul@gmail.com",
+        email: "maria@gmail.com",
+        telefono: "3865-113341",
+      },
+      {
+        nombre: "Laura",
+        apellido: "Lopez",
+        email: "laura@gmail.com",
         telefono: "3865-113341",
       },
     ],
@@ -54,4 +60,41 @@ export const ObtenerDatosAlumnos = async (prisma) => {
 
   console.log("Datos de alumnos encontrados:");
   console.table(datosAlumnos);
+};
+
+export const ActualizarEmailAlumno = async (
+  prisma,
+  emailAnterior,
+  nuevoEmail,
+) => {
+  try {
+    const alumnoActualizado = await prisma.alumno.update({
+      // .update indica para actualizar un parametro
+
+      where: { email: emailAnterior },
+      data: { email: nuevoEmail },
+    });
+    console.log("Email de alumno actualizado", alumnoActualizado);
+  } catch (error) {
+    if (error.code === "P2025") {
+      console.error("Error: No se encontro un alumno con este email");
+    } else {
+      console.error("Ocurrio un error", error);
+    }
+  }
+};
+
+export const eliminarAlumno = async (prisma, email) => {
+  try {
+    const alumnoEliminado = await prisma.alumno.delete({
+      where: { email: email },
+    });
+    console.log("Alumno eliminado", alumnoEliminado.nombre + " " + alumnoEliminado.apellido);
+  } catch (error) {
+    if (error.code === "P2025") {
+      console.error("Error: No se encontró un alumno con ese email");
+    } else {
+      console.error("Ocurrió un error:", error);
+    }
+  }
 };

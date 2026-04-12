@@ -16,12 +16,22 @@
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../src/generated/prisma/client.ts";
 import {
+  ActualizarEmailAlumno,
   crearAlumno,
   crearAlumnos,
   obtenerAlumnos,
   ObtenerDatosAlumnos,
 } from "./services/alumno.service.js";
-import { crearCurso, obtenerCursos } from "./services/curso.service.js";
+import {
+  ActualizarNombreCurso,
+  crearCurso,
+  eliminarCursoPorId,
+  obtenerCursos,
+} from "./services/curso.service.js";
+import {
+  alumnosEnCurso,
+  inscribirAlumno,
+} from "./services/instituto.service.js";
 
 const connectionString = `${process.env.DATABASE_URL}`; // Nuesta conexion con la base de datos
 
@@ -43,7 +53,13 @@ async function main() {
   // await ObtenerDatosAlumnos(prisma);
 
   // await crearCurso(prisma);
-  await obtenerCursos(prisma);
+  // await obtenerCursos(prisma);
+  // await eliminarCursoPorId(prisma, 1)
+
+  // await ActualizarEmailAlumno(prisma, "mateox463@gmail.com", "mec638@gmail.com")
+
+  // await inscribirAlumno(prisma);
+  await alumnosEnCurso(prisma);
 }
 
 // invocamos el main y si algo falla el catch

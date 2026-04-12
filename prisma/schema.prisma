@@ -23,6 +23,6 @@ model Alumno {
 
 model Curso{
 id Int @id @default(autoincrement()) // @default(autoincrement()) sirve para indicar que el ID crecera
-  nombre String 
+  nombre String @unique 
   alumnos Alumno[]
 }
